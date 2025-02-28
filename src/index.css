@@ -12,6 +12,8 @@
   align-items: center;
 }
 
-.bg-body-tertiary {
-  background-color: black;
+.main {
+  background-color: rgb(78, 78, 78);
+  height: 100vh;
+  display: flex;
 }
