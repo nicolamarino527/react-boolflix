@@ -53,6 +53,7 @@ export default function Search({ searchQuery }) {
 
     return (
         <div className="main">
+            {/* <h1 className="text-white">Risultati di ricerca per:</h1> */}
             {/* scriviamo un messaggio in caso di errore */}
             {error && <p className="text-danger">{error}</p>}
 
@@ -64,9 +65,9 @@ export default function Search({ searchQuery }) {
                             <div className="card" style={{ width: '18rem' }}>
                                 <img src={`https://image.tmdb.org/t/p/w342/${movie.poster_path}`} className="card-img-top" alt="..." />
                                 <div className="card-body">
-                                    <h5 className="card-title">{movie.title}</h5>
+                                    <h5 className="card-titl pb-2">{movie.title}</h5>
                                     <p className="card-text">Titolo originale: {movie.original_title}</p>
-                                    <p className="card-text"> {movie.original_language}</p>
+                                    <p className="card-text">{movie.original_language}</p>
                                     <p className="card-text">Voto: {movie.vote_average}</p>
                                     {/* <p className="card-text">Descrizione: {movie.overview}</p> */}
                                 </div>
