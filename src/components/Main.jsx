@@ -35,13 +35,16 @@ export default function Main({ searchQuery }) {
                 setError('');
             } catch (err) {
                 console.error(err);
-                setError('Errore nella ricerca dei film');
+                setError('Errore di ricerca');
                 // i caso di errore setta l insieme di fil vuoto
                 setMovies([]);
             }
+
         };
+
         fetchMovies();
     }, [searchQuery]);
+
 
     //fine chimata
 
@@ -50,7 +53,29 @@ export default function Main({ searchQuery }) {
 
     return (
         <div className="main">
-            wqww
+            {/* scriviamo un messaggio in caso di errore */}
+            {error && <p className="text-danger">{error}</p>}
+
+            {/* nel caso in cui non troviamo risultati mostrimo un messaggio all utente  */}
+            {movies.length > 0 ? (
+                <ul className="card-container">
+                    {movies.map((movie) => (
+                        <li key={movie.id}>
+                            <div className="card" style={{ width: '18rem' }}>
+                                <img src="..." className="card-img-top" alt="..." />
+                                <div className="card-body">
+                                    <h5 className="card-title">{movie.title}</h5>
+                                    <p className="card-text">{movie.original_title}</p>
+                                    <p className="card-text">{movie.vote_average}</p>
+                                    <p className="card-text">{movie.overview}</p>
+                                </div>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            ) : (
+                <p>No results found</p>
+            )}
         </div>
     );
 }
