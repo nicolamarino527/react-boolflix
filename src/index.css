@@ -50,3 +50,7 @@
   position: absolute;
   transition: 0.3s;
 }
+
+.flags {
+  width: 30px;
+}

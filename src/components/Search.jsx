@@ -9,6 +9,9 @@ export default function Search({ searchQuery }) {
     // scriviamo la costante per l array di film
     const [movies, setMovies] = useState([]);
 
+    // scriviamo la costante per l array di serie
+    const [Series, setSeries] = useState([]);
+
     // scriviamo la costante per gestire la ricerca in caso di scritta nulla
     const [error, setError] = useState("")
 
@@ -22,7 +25,11 @@ export default function Search({ searchQuery }) {
         ja: "JA"
     };
 
-    // impostiamo la chimata
+
+
+
+
+    // impostiamo la chimata per i film
     useEffect(() => {
         // // se la query è nulla non facciamo partire la chiamata
         if (!searchQuery) return;
@@ -53,6 +60,39 @@ export default function Search({ searchQuery }) {
 
         fetchMovies();
     }, [searchQuery]);
+    //fine chimata
+
+    // impostiamo la chimata per le serie
+    useEffect(() => {
+        // // se la query è nulla non facciamo partire la chiamata
+        if (!searchQuery) return;
+
+        // facciamo in  modo che la chiamata sia asincrona (utilizzando async/await, try/catch)
+        const fetchSeries = async () => {
+            try {
+                const response = await axios.get('https://api.themoviedb.org/3/search/tv?', {
+                    params: {
+                        api_key: 'e99307154c6dfb0b4750f6603256716d',
+                        query: searchQuery,
+                    },
+                });
+
+                // aggiorniamo i dati di set movies con quelli delle chiamata
+                setSeries(response.data.results);
+
+                // in caso di errore setta lo stato error
+                setError('');
+            } catch (err) {
+                console.error(err);
+                setError('Errore di ricerca');
+                // i caso di errore setta l insieme di fil vuoto
+                setSeries([]);
+            }
+
+        };
+
+        fetchSeries();
+    }, [searchQuery]);
 
 
     //fine chimata
@@ -61,6 +101,7 @@ export default function Search({ searchQuery }) {
 
 
     return (
+
         <div className="main">
             {/* <h1 className="text-white">Risultati di ricerca per:</h1> */}
             {/* scriviamo un messaggio in caso di errore */}
@@ -77,9 +118,9 @@ export default function Search({ searchQuery }) {
                                     <h5 className="card-titl pb-2">{movie.title}</h5>
                                     <p className="card-text">Titolo originale: {movie.original_title}</p>
 
-                                    {/* utilizziamo font awesome per cambiare la la descrizione del linguaggio nell immagine della bandiera */}
+                                    {/* utilizziamo react-world-flags per cambiare la la descrizione del linguaggio nell immagine della bandiera */}
                                     <p className="card-text">
-                                        <Flag code={flags[movie.original_language.toLowerCase()]} ></Flag>
+                                        <Flag className="flags" code={flags[movie.original_language.toLowerCase()] || "?"} ></Flag>
                                     </p>
 
                                     <p className="card-text">Voto: {movie.vote_average}</p>
@@ -88,6 +129,7 @@ export default function Search({ searchQuery }) {
                             </div>
                         </li>
                     ))}
+
                 </ul>
             ) : (
                 <p>Nesun risultato trovato...</p>
