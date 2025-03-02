@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './App.css'
 
 import Navbar from './components/Navbar';
-import Main from './components/Main';
+import Search from './components/Search';
 
 function App() {
   // costante per search query
@@ -16,7 +16,7 @@ function App() {
   return (
     <>
       <Navbar onSearch={handleSearchQuery} />
-      <Main searchQuery={searchQuery} />
+      <Search searchQuery={searchQuery} />
     </>
   )
 }

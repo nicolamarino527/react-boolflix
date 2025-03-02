@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 
-export default function Main({ searchQuery }) {
+export default function Search({ searchQuery }) {
 
     console.log("Query di ricerca:", searchQuery);
 
@@ -62,19 +62,19 @@ export default function Main({ searchQuery }) {
                     {movies.map((movie) => (
                         <li key={movie.id}>
                             <div className="card" style={{ width: '18rem' }}>
-                                <img src="..." className="card-img-top" alt="..." />
+                                <img src={`https://image.tmdb.org/t/p/w342/${movie.poster_path}`} className="card-img-top" alt="..." />
                                 <div className="card-body">
                                     <h5 className="card-title">{movie.title}</h5>
-                                    <p className="card-text">{movie.original_title}</p>
-                                    <p className="card-text">{movie.vote_average}</p>
-                                    <p className="card-text">{movie.overview}</p>
+                                    <p className="card-text">Titolo originale: {movie.original_title}</p>
+                                    <p className="card-text">Voto: {movie.vote_average}</p>
+                                    <p className="card-text">Descrizione: {movie.overview}</p>
                                 </div>
                             </div>
                         </li>
                     ))}
                 </ul>
             ) : (
-                <p>No results found</p>
+                <p>Nesun risultato trovato...</p>
             )}
         </div>
     );
