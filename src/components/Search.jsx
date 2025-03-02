@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-
+import axios from "axios"
+import Flag from "react-world-flags";
 
 export default function Search({ searchQuery }) {
 
@@ -12,6 +12,15 @@ export default function Search({ searchQuery }) {
     // scriviamo la costante per gestire la ricerca in caso di scritta nulla
     const [error, setError] = useState("")
 
+
+    // creiamo la costante dove contenere le flags in base alla lingua tramite react-world-flags
+    const flags = {
+        it: "IT",
+        en: "US",
+        es: "ES",
+        fr: "FR",
+        ja: "JA"
+    };
 
     // impostiamo la chimata
     useEffect(() => {
@@ -63,11 +72,16 @@ export default function Search({ searchQuery }) {
                     {movies.map((movie) => (
                         <li key={movie.id}>
                             <div className="card" style={{ width: '18rem' }}>
-                                <img src={`https://image.tmdb.org/t/p/w342/${movie.poster_path}`} className="card-img-top" alt="..." />
+                                <img src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} className="card-img-top" alt="..." />
                                 <div className="card-body">
                                     <h5 className="card-titl pb-2">{movie.title}</h5>
                                     <p className="card-text">Titolo originale: {movie.original_title}</p>
-                                    <p className="card-text">{movie.original_language}</p>
+
+                                    {/* utilizziamo font awesome per cambiare la la descrizione del linguaggio nell immagine della bandiera */}
+                                    <p className="card-text">
+                                        <Flag code={flags[movie.original_language.toLowerCase()]} ></Flag>
+                                    </p>
+
                                     <p className="card-text">Voto: {movie.vote_average}</p>
                                     {/* <p className="card-text">Descrizione: {movie.overview}</p> */}
                                 </div>
