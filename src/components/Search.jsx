@@ -10,7 +10,7 @@ export default function Search({ searchQuery }) {
     const [movies, setMovies] = useState([]);
 
     // scriviamo la costante per l array di serie
-    const [Series, setSeries] = useState([]);
+    const [series, setSeries] = useState([]);
 
     // scriviamo la costante per gestire la ricerca in caso di scritta nulla
     const [error, setError] = useState("")
@@ -129,7 +129,24 @@ export default function Search({ searchQuery }) {
                             </div>
                         </li>
                     ))}
+                    {series.map((season) => (
+                        <li key={season.id}>
+                            <div className="card" style={{ width: '18rem' }}>
+                                <img src={`https://image.tmdb.org/t/p/w342${season.poster_path}`} className="card-img-top" alt="..." />
+                                <div className="card-body">
+                                    <h5 className="card-titl pb-2">{season.title}</h5>
+                                    <p className="card-text">Titolo originale: {season.original_title}</p>
 
+                                    {/* utilizziamo react-world-flags per cambiare la la descrizione del linguaggio nell immagine della bandiera */}
+                                    <p className="card-text">
+                                        <Flag className="flags" code={flags[season.original_language.toLowerCase()] || "?"} ></Flag>
+                                    </p>
+
+                                    <p className="card-text">Voto: {season.vote_average}</p>
+                                </div>
+                            </div>
+                        </li>
+                    ))}
                 </ul>
             ) : (
                 <p>Nesun risultato trovato...</p>
