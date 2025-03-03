@@ -5,6 +5,9 @@ import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
 
+    // scriviamo la costante per l array di film
+    const [movies, setMovies] = useState([]);
+
     // costante per aggiornare la query
     const [inputQuery, setInputQuery] = useState("")
 
@@ -35,7 +38,7 @@ export default function Navbar() {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <a className="nav-link active text-white" aria-current="page" href="#">Home</a>
+                                <NavLink to="/" className="nav-link active text-white" aria-current="page" href="#">Home</NavLink>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link text-white" href="#">Link</a>

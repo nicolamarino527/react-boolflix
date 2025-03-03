@@ -29,6 +29,12 @@
   list-style: none;
 }
 
+.card-home-container {
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 0;
+}
+
 .overlow-hidden {
   overflow: hidden;
 }
@@ -87,4 +93,8 @@ a {
   background-color: black;
   margin-top: 20px;
   width: 120px;
+}
+
+ul {
+  list-style: none;
 }
