@@ -2,7 +2,12 @@ import { useEffect, useState } from "react";
 import axios from "axios"
 import Flag from "react-world-flags";
 
-export default function Search({ searchQuery }) {
+// context
+import { useSearch } from "../context/SearchContext";
+
+export default function Search() {
+
+    const { searchQuery } = useSearch();
 
     console.log("Query di ricerca:", searchQuery);
 

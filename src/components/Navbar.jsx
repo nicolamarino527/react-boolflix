@@ -1,15 +1,21 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { useSearch } from "../context/SearchContext";
 
-export default function Navbar({ onSearch }) {
-    // scriviamo la constante per onservare la query di ricerca
-    const [searchQuery, setSearchQuery] = useState("")
+export default function Navbar() {
 
-    // scriviamo la funzione per salvare la query tramite il form
-    const handleSearch = (event) => {
-        event.preventDefault();
-        // mandiamo i dati al componente genitore
-        onSearch(searchQuery)
+    // costante per aggiornare la query
+    const [inputQuery, setInputQuery] = useState("")
+
+
+    // cambiamo il valore in base al contesto
+    const { searchQuery, updateSearchQuery } = useSearch()
+
+
+    // funzione sulla ricerca
+    const handleSearch = (e) => {
+        e.preventDefault()
+        updateSearchQuery(inputQuery)
     }
 
 
@@ -42,11 +48,15 @@ export default function Navbar({ onSearch }) {
 
                         {/* aggiungiamo la funzione iìon submit al click del bottone e in seriamo il valore nella costante */}
                         <form className="d-flex" role="search" onSubmit={handleSearch}>
-                            <input className="form-control me-2" type="search" placeholder="Cerca film, serie tv..." aria-label="Search"
-                                value={searchQuery}
-                                onChange={(e) => setSearchQuery(e.target.value)}
+                            <input
+                                className="form-control me-2"
+                                type="search"
+                                placeholder="Cerca film, serie tv..."
+                                aria-label="Search"
+                                value={inputQuery}
+                                onChange={(e) => setInputQuery(e.target.value)}
                             />
-                            <button className="btn btn-outline-danger" type="submit">Cerca</button>
+                            <button type="submit" className="btn btn-outline-danger">Cerca</button>
                         </form>
                     </div>
                 </div>
