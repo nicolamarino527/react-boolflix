@@ -9,6 +9,7 @@ import Search from './components/Search';
 // pagine
 import HomePage from './pages/HomePage';
 import SearchPage from './pages/SearchPage';
+import TrendingPage from './pages/TrandingPage';
 
 
 // context
@@ -25,6 +26,7 @@ function App() {
           <Routes >
             <Route path="/" element={<HomePage />} />
             <Route path="/search" element={<SearchPage />} />
+            <Route path="/trending" element={<TrendingPage />} />
           </Routes>
           <Footer />
         </BrowserRouter>

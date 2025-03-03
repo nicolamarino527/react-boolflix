@@ -41,15 +41,12 @@ export default function Navbar() {
                                 <NavLink to="/" className="nav-link active text-white" aria-current="page" href="#">Home</NavLink>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link text-white" href="#">Link</a>
+                                <NavLink to="/trending" className="nav-link text-white" aria-current="page" href="#">Tendenze</NavLink>
                             </li>
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Dropdown
                                 </a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link disabled text-white" aria-disabled="true">Disabled</a>
                             </li>
                         </ul>
 
