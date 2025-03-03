@@ -13,6 +13,7 @@ import SearchPage from './pages/SearchPage';
 
 // context
 import { SearchProvider } from './context/SearchContext';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/search" element={<SearchPage />} />
           </Routes>
+          <Footer />
         </BrowserRouter>
       </SearchProvider>
     </>

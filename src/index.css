@@ -54,3 +54,37 @@
 .flags {
   width: 30px;
 }
+
+.footer {
+  width: 100%;
+  height: 400px;
+  background-color: black;
+  padding-top: 50px;
+  color: rgb(199, 199, 199);
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.info-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.info {
+  list-style: none;
+  line-height: 30px;
+  color: white;
+}
+
+a {
+  color: rgb(199, 199, 199);
+  font-size: small;
+}
+
+.form-select {
+  color: rgb(199, 199, 199);
+  border-color: rgb(199, 199, 199);
+  background-color: black;
+  margin-top: 20px;
+  width: 120px;
+}
