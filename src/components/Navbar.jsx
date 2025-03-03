@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useSearch } from "../context/SearchContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
 
@@ -11,11 +12,14 @@ export default function Navbar() {
     // cambiamo il valore in base al contesto
     const { searchQuery, updateSearchQuery } = useSearch()
 
+    // utilizziamo  use navigate
+    const navigate = useNavigate()
 
     // funzione sulla ricerca
     const handleSearch = (e) => {
         e.preventDefault()
         updateSearchQuery(inputQuery)
+        navigate("/search")
     }
 
 
