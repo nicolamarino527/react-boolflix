@@ -132,7 +132,7 @@ export default function Search({ searchQuery }) {
                     {series.map((season) => (
                         <li key={season.id}>
                             <div className="card" style={{ width: '18rem' }}>
-                                <img src={`https://image.tmdb.org/t/p/w342${season.poster_path}`} className="card-img-top" alt="..." />
+                                <img src={`https://image.tmdb.org/t/p/w342${season.poster_path}`} className="card-img-top" alt={`https://image.tmdb.org/t/p/w342/wwemzKWzjKYJFfCeiB57q3r4Bcm.png`} />
                                 <div className="card-body">
                                     <h5 className="card-titl pb-2">{season.title}</h5>
                                     <p className="card-text">Titolo originale: {season.original_title}</p>

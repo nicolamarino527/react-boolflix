@@ -1,24 +1,33 @@
 import { useState } from 'react'
+import { BrowserRouter, Routes, Route, } from 'react-router-dom';
 import './App.css'
 
+// componenti
 import Navbar from './components/Navbar';
 import Search from './components/Search';
 
-function App() {
-  // costante per search query
-  const [searchQuery, setSearchQuery] = useState("");
+// pagine
+import HomePage from './pages/HomePage';
+import SearchPage from './pages/SearchPage';
 
-  // aggiorniamo la ricerca
-  const handleSearchQuery = (query) => {
-    setSearchQuery(query);
-  }
+
+// context
+import { SearchProvider } from './context/SearchContext';
+
+function App() {
 
   return (
     <>
-      <Navbar onSearch={handleSearchQuery} />
-      <Search searchQuery={searchQuery} />
+      <SearchProvider>
+        <BrowserRouter>
+          <Navbar />
+          <Routes >
+            <Route path="/" element={<HomePage />} />
+            <Route path="/search" element={<SearchPage />} />
+          </Routes>
+        </BrowserRouter>
+      </SearchProvider>
     </>
   )
 }
-
 export default App
